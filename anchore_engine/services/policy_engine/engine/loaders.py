@@ -810,7 +810,7 @@ class ImageLoader(object):
                 if n not in ret_names:
                     ret_names.append(n)
 
-        return(ret_names)
+        return ret_names
 
     def _fuzzy_npm(self, input_el):
         global nomatch_inclusions
@@ -824,7 +824,7 @@ class ImageLoader(object):
                 if n not in ret_names:
                     ret_names.append(n)
 
-        return(ret_names)
+        return ret_names
 
     def _fuzzy_gem(self, input_el):
         global nomatch_inclusions
@@ -838,7 +838,7 @@ class ImageLoader(object):
                 if n not in ret_names:
                     ret_names.append(n)
 
-        return(ret_names)
+        return ret_names
 
     def _fuzzy_java(self, input_el):
         global nomatch_inclusions
@@ -966,7 +966,7 @@ class ImageLoader(object):
                     if matchmap_candidate not in ret_names:
                         ret_names.append(matchmap_candidate)
 
-        return(ret_names, ret_versions)
+        return ret_names, ret_versions
 
     def load_cpes(self, analysis_json, containing_image):
         allcpes = {}

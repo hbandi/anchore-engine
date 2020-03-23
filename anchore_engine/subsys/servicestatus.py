@@ -12,12 +12,12 @@ my_service_record = None
 
 def get_my_service_record():
     global my_service_record
-    return(my_service_record)
+    return my_service_record
 
 def set_my_service_record(service_record):
     global my_service_record
     my_service_record = service_record
-    return(True)
+    return True
 
 def set_status(service_record, up=True, available=True, busy=False, message="all good", detail=None, update_db=False):
     global service_statuses
@@ -67,7 +67,7 @@ def update_status(service_record):
         else:
             db_services.add(hostid, servicename, service_record, session=dbsession)
 
-    return(True)
+    return True
 
 def get_status(service_record):
     global service_statuses
@@ -80,7 +80,7 @@ def get_status(service_record):
         ret = service_statuses[service]
     else:
         raise Exception("no service status set for service: " + str(service))
-    return(ret)
+    return ret
 
 def handle_service_heartbeat(*args, **kwargs):
     cycle_timer = kwargs['mythread']['cycle_timer']
@@ -90,7 +90,7 @@ def handle_service_heartbeat(*args, **kwargs):
     except Exception as err:
         raise Exception("BUG: need to provide service name as first argument to function: " + str(args))
 
-    while(True):
+    while True:
         logger.debug("storing service status: " + str(servicename))
         try:
             logger.debug("local service record: {}".format(anchore_engine.subsys.servicestatus.get_my_service_record()))
@@ -104,5 +104,5 @@ def handle_service_heartbeat(*args, **kwargs):
 
         time.sleep(cycle_timer)
 
-    return(True)
+    return True
 
