@@ -19,10 +19,10 @@ build() {
 
     if [[ "${GIT_TAG}" =~ ^v[0-9]+(\.[0-9]+)*.*$ ]]; then
         # Get the latest anchore-cli tag from remote
-        anchore_cli_commit="$(git -c 'versionsort.suffix=-' ls-remote --exit-code --tags --refs --sort="v:refname" git://github.com/anchore/anchore-cli.git 'v*' | tail -n1 | sed 's/.*\///')"
+        anchore_cli_commit="$(git -c 'versionsort.suffix=-' ls-remote --exit-code --tags --refs --sort="v:refname" https://github.com/anchore/anchore-cli.git 'v*' | tail -n1 | sed 's/.*\///')"
     else
         # Get commit sha from HEAD of master anchore-cli remote
-        anchore_cli_commit="$(git ls-remote git://github.com/anchore/anchore-cli.git | head -n1 | awk '{print $1}')"
+        anchore_cli_commit="$(git ls-remote https://github.com/anchore/anchore-cli.git | head -n1 | awk '{print $1}')"
     fi
 
     print_colorized WARN "building image ${TEST_IMAGE_NAME} - installing anchore-cli from git@${anchore_cli_commit}"
